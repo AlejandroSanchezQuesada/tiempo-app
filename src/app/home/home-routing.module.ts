@@ -6,11 +6,18 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+  },
+  {
+    path: 'provincias/:idProvincia',
+    loadChildren: () =>
+      import('../provincias/provincias.module').then(
+        (m) => m.ProvinciasPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HomePageRoutingModule {}

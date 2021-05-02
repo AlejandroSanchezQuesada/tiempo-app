@@ -1,0 +1,49 @@
+<div *ngIf="datosCargados">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+
+      <ion-title
+        *ngIf="datosProvincia['provincia'].NOMBRE_PROVINCIA != undefined"
+        >Provincia de
+        {{datosProvincia['provincia'].NOMBRE_PROVINCIA}}</ion-title
+      >
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content fullscreen>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h1>
+            <ion-text color="primary">{{datosProvincia['title']}}</ion-text>
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" *ngFor="let ciudad of datosProvincia['ciudades']">
+          <div class="datosProvinciaEstilo">
+            <h3>{{ciudad.name}}</h3>
+            <p>{{ciudad.stateSky.description}}</p>
+            <ion-row>
+              <ion-col size="6">Max: {{ciudad.temperatures.max}}</ion-col>
+              <ion-col size="6">Min: {{ciudad.temperatures.min}}</ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <h5>El tiempo hoy:</h5>
+          <p>{{datosProvincia['today'].p}}</p>
+        </ion-col>
+        <ion-col size="12">
+          <h5>El tiempo mañana:</h5>
+          <p>{{datosProvincia['tomorrow'].p}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</div>
